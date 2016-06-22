@@ -1,0 +1,9 @@
+.vs
+Debug
+EtherEngine/Debug
+*.obj
+*.idb
+*.pdb
+EtherEngine.VC.db
+EtherEngine.VC.VC.opendb
+EtherEngine/EtherEngine.vcxproj.user
