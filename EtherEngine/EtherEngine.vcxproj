@@ -92,7 +92,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)/external/GLFW/include;$(ProjectDir)/GL</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)/external/GLFW/lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>glfw3_d.lib;%(AdditionalDependencies);glu32.lib;opengl32.lib</AdditionalDependencies>
@@ -125,7 +125,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)/external/GLFW/include;$(ProjectDir)/GL</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -152,11 +152,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="EtherApp.cpp" />
+    <ClCompile Include="EtherDemoApp.cpp" />
+    <ClCompile Include="EtherLog.cpp" />
     <ClCompile Include="GL\gl3w.c" />
-    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Ether.h" />
+    <ClInclude Include="EtherApp.h" />
+    <ClInclude Include="EtherLog.h" />
     <ClInclude Include="GL\gl3w.h" />
     <ClInclude Include="GL\glcorearb.h" />
     <ClInclude Include="GL\glext.h" />

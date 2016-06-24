@@ -57,6 +57,28 @@ public:
 		glfwSetKeyCallback(mWindow, GLFW_OnKey);
 
 		gl3wInit();
+
+#if DEBUG
+		glDebugMessageCallback((GLDEBUGPROC)DebugCallback, this);
+		glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
+#endif
+
+		Startup();
+
+		do {
+			Render(glfwGetTime());
+
+			glfwSwapBuffers(mWindow);
+			glfwPollEvents();
+
+			running &= (glfwGetKey(mWindow, GLFW_KEY_ESCAPE) == GLFW_RELEASE);
+			running &= (glfwWindowShouldClose(mWindow) != GL_TRUE);
+		} while (running);
+
+		Shutdown();
+
+		glfwDestroyWindow(mWindow);
+		glfwTerminate();
 	}
 
 protected:
@@ -68,6 +90,18 @@ protected:
 		mSamples = 0;
 	}
 
+	virtual void Startup() {
+
+	}
+
+	virtual void Render(double currentTime) {
+
+	}
+
+	virtual void Shutdown() {
+
+	}
+
 	virtual void OnResize(size_t w, size_t h) {
 		mWindowWidth = w;
 		mWindowHeight = h;
@@ -76,6 +110,20 @@ protected:
 	virtual void OnKey(int key, int action) {
 
 	}
+
+	virtual void OnDebugMessage(GLenum source,
+		GLenum type,
+		GLuint id,
+		GLenum severity,
+		GLsizei length,
+		const GLchar* message)
+	{
+#ifdef _WIN32
+		OutputDebugStringA(message);
+		OutputDebugStringA("\n");
+#endif /* _WIN32 */
+	}
+
 
 private:
 
@@ -106,19 +154,15 @@ private:
 }
 
 
-
-
-
-
 #define DECLARE_MAIN(a)                             \
-sb7::application *app = 0;                          \
+Ether::EtherApp *app = 0;                           \
 int CALLBACK WinMain(HINSTANCE hInstance,           \
                      HINSTANCE hPrevInstance,       \
                      LPSTR lpCmdLine,               \
                      int nCmdShow)                  \
 {                                                   \
-    a *app = new a;                                 \
-    app->run(app);                                  \
+    app = new a;                                    \
+    app->Run(app);                                  \
     delete app;                                     \
     return 0;                                       \
 }
