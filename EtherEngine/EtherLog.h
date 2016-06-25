@@ -17,6 +17,12 @@ public:
 		return mInstance;
 	}
 
+	void Release() {
+		if (mInstance) {
+			delete mInstance;
+		}
+	}
+
 	void LogError(const std::string msg) {
 		std::cout << "EtherError:" << msg << std::endl;
 	}
@@ -29,9 +35,7 @@ private:
 	}
 
 	~EtherLog() {
-		if (mInstance) {
-			delete mInstance;
-		}
+
 	}
 };
 

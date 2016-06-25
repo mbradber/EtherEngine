@@ -81,6 +81,8 @@ public:
 		glfwTerminate();
 	}
 
+	void EtherApp::CompileShader(GLuint shader, const std::string& shaderPath) const;
+
 protected:
 
 	virtual void Init() {
@@ -98,9 +100,7 @@ protected:
 
 	}
 
-	virtual void Shutdown() {
-
-	}
+	virtual void Shutdown();
 
 	virtual void OnResize(size_t w, size_t h) {
 		mWindowWidth = w;
@@ -123,7 +123,6 @@ protected:
 		OutputDebugStringA("\n");
 #endif /* _WIN32 */
 	}
-
 
 private:
 

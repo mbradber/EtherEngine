@@ -8,45 +8,21 @@ protected:
 	void Startup() {
 		EtherApp::Startup();
 
-		static const char * vs_source[] =
-		{
-			"#version 450 core                                                 \n"
-			"                                                                  \n"
-			"void main(void)                                                   \n"
-			"{                                                                 \n"
-			"    const vec4 vertices[] = vec4[](vec4( 0.25, -0.25, 0.5, 1.0),  \n"
-			"                                   vec4(-0.25, -0.25, 0.5, 1.0),  \n"
-			"                                   vec4( 0.25,  0.25, 0.5, 1.0)); \n"
-			"                                                                  \n"
-			"    gl_Position = vertices[gl_VertexID];                          \n"
-			"}                                                                 \n"
-		};
-
-		static const char * fs_source[] =
-		{
-			"#version 450 core                                                 \n"
-			"                                                                  \n"
-			"out vec4 color;                                                   \n"
-			"                                                                  \n"
-			"void main(void)                                                   \n"
-			"{                                                                 \n"
-			"    color = vec4(0.0, 0.8, 1.0, 1.0);                             \n"
-			"}                                                                 \n"
-		};
-
 		mProgram = glCreateProgram();
+
 		GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
-		glShaderSource(fs, 1, fs_source, NULL);
-		glCompileShader(fs);
+		CompileShader(fs, "simple_tri_ps.glsl");
 
 		GLuint vs = glCreateShader(GL_VERTEX_SHADER);
-		glShaderSource(vs, 1, vs_source, NULL);
-		glCompileShader(vs);
+		CompileShader(vs, "simple_tri_vs.glsl");
 
 		glAttachShader(mProgram, vs);
 		glAttachShader(mProgram, fs);
 
 		glLinkProgram(mProgram);
+
+		glDeleteShader(fs);
+		glDeleteShader(vs);
 
 		glGenVertexArrays(1, &mVao);
 		glBindVertexArray(mVao);
@@ -63,6 +39,8 @@ protected:
 	}
 
 	void Shutdown() {
+		EtherApp::Shutdown();
+
 		glDeleteVertexArrays(1, &mVao);
 		glDeleteProgram(mProgram);
 	}

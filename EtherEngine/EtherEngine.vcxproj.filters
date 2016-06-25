@@ -16,6 +16,12 @@
     <Filter Include="Header Files\GL">
       <UniqueIdentifier>{89d9962a-c662-409a-a5e0-384b1d8c744c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="assets">
+      <UniqueIdentifier>{a122c780-d2c4-4910-972d-c06fd341a9b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="assets\shaders">
+      <UniqueIdentifier>{ea901265-a71a-42c0-b850-070a165a843b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GL\gl3w.c">
@@ -28,6 +34,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EtherDemoApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EtherPlatform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,5 +62,16 @@
     <ClInclude Include="EtherLog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EtherPlatform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\assets\shaders\simple_tri_ps.glsl">
+      <Filter>assets\shaders</Filter>
+    </None>
+    <None Include="..\assets\shaders\simple_tri_vs.glsl">
+      <Filter>assets\shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

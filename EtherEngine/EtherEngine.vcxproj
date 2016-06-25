@@ -155,16 +155,22 @@
     <ClCompile Include="EtherApp.cpp" />
     <ClCompile Include="EtherDemoApp.cpp" />
     <ClCompile Include="EtherLog.cpp" />
+    <ClCompile Include="EtherPlatform.cpp" />
     <ClCompile Include="GL\gl3w.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EtherApp.h" />
     <ClInclude Include="EtherLog.h" />
+    <ClInclude Include="EtherPlatform.h" />
     <ClInclude Include="GL\gl3w.h" />
     <ClInclude Include="GL\glcorearb.h" />
     <ClInclude Include="GL\glext.h" />
     <ClInclude Include="GL\glxext.h" />
     <ClInclude Include="GL\wglext.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\assets\shaders\simple_tri_ps.glsl" />
+    <None Include="..\assets\shaders\simple_tri_vs.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
