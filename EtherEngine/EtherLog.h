@@ -3,8 +3,8 @@
 #include <iostream>
 #include <string>
 
-namespace Ether
-{
+namespace Ether {
+namespace Core {
 
 class EtherLog
 {
@@ -23,9 +23,7 @@ public:
 		}
 	}
 
-	void LogError(const std::string msg) {
-		std::cout << "EtherError:" << msg << std::endl;
-	}
+	void LogError(const std::string& msg);
 
 private:
 	static EtherLog* mInstance;
@@ -39,4 +37,5 @@ private:
 	}
 };
 
+}
 }

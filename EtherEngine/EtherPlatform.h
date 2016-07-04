@@ -2,8 +2,8 @@
 
 #include <string>
 
-namespace Ether
-{
+namespace Ether {
+namespace Core {
 
 class EtherPlatform
 {
@@ -36,4 +36,6 @@ private:
 	}
 };
 
+
+}
 }

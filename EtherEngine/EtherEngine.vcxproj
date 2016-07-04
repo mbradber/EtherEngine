@@ -153,13 +153,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="EtherApp.cpp" />
+    <ClCompile Include="EtherCubeRO.cpp" />
     <ClCompile Include="EtherDemoApp.cpp" />
     <ClCompile Include="EtherLog.cpp" />
     <ClCompile Include="EtherPlatform.cpp" />
     <ClCompile Include="GL\gl3w.c" />
+    <ClCompile Include="sb7ktx.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EtherApp.h" />
+    <ClInclude Include="EtherCubeRO.h" />
+    <ClInclude Include="EtherGeometry.h" />
     <ClInclude Include="EtherLog.h" />
     <ClInclude Include="EtherPlatform.h" />
     <ClInclude Include="GL\gl3w.h" />
@@ -167,10 +171,16 @@
     <ClInclude Include="GL\glext.h" />
     <ClInclude Include="GL\glxext.h" />
     <ClInclude Include="GL\wglext.h" />
+    <ClInclude Include="sb7ktx.h" />
+    <ClInclude Include="vmath.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\assets\ktx\baboon.ktx" />
+    <None Include="..\assets\ktx\brick.ktx" />
     <None Include="..\assets\shaders\simple_tri_ps.glsl" />
     <None Include="..\assets\shaders\simple_tri_vs.glsl" />
+    <None Include="..\assets\shaders\texture_map_basic_fs.glsl" />
+    <None Include="..\assets\shaders\texture_map_basic_vs.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

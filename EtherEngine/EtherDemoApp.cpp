@@ -1,53 +1,48 @@
 #include "EtherApp.h"
+#include "EtherCubeRO.h"
 
-using namespace Ether;
-
-class EtherDemoApp : public EtherApp
+class EtherDemoApp : public Ether::Core::EtherApp
 {
 protected:
 	void Startup() {
 		EtherApp::Startup();
 
-		mProgram = glCreateProgram();
+		mCube = new Ether::Renderables::EtherCubeRO("ktx/baboon.ktx");
 
-		GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
-		CompileShader(fs, "simple_tri_ps.glsl");
-
-		GLuint vs = glCreateShader(GL_VERTEX_SHADER);
-		CompileShader(vs, "simple_tri_vs.glsl");
-
-		glAttachShader(mProgram, vs);
-		glAttachShader(mProgram, fs);
-
-		glLinkProgram(mProgram);
-
-		glDeleteShader(fs);
-		glDeleteShader(vs);
-
-		glGenVertexArrays(1, &mVao);
-		glBindVertexArray(mVao);
+		glEnable(GL_CULL_FACE);
+		glEnable(GL_DEPTH_TEST);
+		glDepthFunc(GL_LEQUAL);
 	}
 
 	void Render(double currentTime) {
 		EtherApp::Render(currentTime);
 
 		static const GLfloat green[] = { 0.0f, 0.25f, 0.0f, 1.0f };
-		glClearBufferfv(GL_COLOR, 0, green);
+		static const GLfloat one = 1.0f;
 
-		glUseProgram(mProgram);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glViewport(0, 0, mWindowWidth, mWindowHeight);
+		glClearBufferfv(GL_COLOR, 0, green);
+		glClearBufferfv(GL_DEPTH, 0, &one);
+
+		float f = (float)currentTime * 0.3f;
+		vmath::mat4 mvMatrix = vmath::translate(0.0f, 0.0f, -4.0f) *
+			vmath::translate(sinf(2.1f * f) * 0.5f,
+				cosf(1.7f * f) * 0.5f,
+				sinf(1.3f * f) * cosf(1.5f * f) * 2.0f) *
+			vmath::rotate((float)currentTime * 45.0f, 0.0f, 1.0f, 0.0f) *
+			vmath::rotate((float)currentTime * 81.0f, 1.0f, 0.0f, 0.0f);
+		vmath::mat4 projMatrix = vmath::perspective(50.0f, (float)mWindowWidth / (float)mWindowHeight, 0.1f, 1000.0f);
+
+		mCube->Render(currentTime, mvMatrix, projMatrix);
 	}
 
 	void Shutdown() {
 		EtherApp::Shutdown();
-
-		glDeleteVertexArrays(1, &mVao);
-		glDeleteProgram(mProgram);
+		delete mCube;
 	}
 
 private:
-	GLuint mProgram;
-	GLuint mVao;
+	Ether::Renderables::EtherCubeRO* mCube;
 };
 
 DECLARE_MAIN(EtherDemoApp)

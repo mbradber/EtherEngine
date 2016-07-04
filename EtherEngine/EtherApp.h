@@ -11,8 +11,8 @@
 
 #include "EtherLog.h"
 
-namespace Ether
-{
+namespace Ether {
+namespace Core {
 
 class EtherApp
 {
@@ -81,7 +81,7 @@ public:
 		glfwTerminate();
 	}
 
-	void EtherApp::CompileShader(GLuint shader, const std::string& shaderPath) const;
+	static void EtherApp::CompileShader(GLuint shader, const std::string& shaderPath);
 
 protected:
 
@@ -144,6 +144,9 @@ private:
 
 	GLFWwindow* mWindow;
 	static EtherApp* mApp;
+
+protected:
+
 	size_t mWindowWidth;
 	size_t mWindowHeight;
 	size_t mSamples;
@@ -151,10 +154,11 @@ private:
 };
 
 }
+}
 
 
 #define DECLARE_MAIN(a)                             \
-Ether::EtherApp *app = 0;                           \
+Ether::Core::EtherApp *app = 0;                           \
 int CALLBACK WinMain(HINSTANCE hInstance,           \
                      HINSTANCE hPrevInstance,       \
                      LPSTR lpCmdLine,               \
