@@ -52,12 +52,29 @@ void EtherApp::CompileShader(GLuint shader, const std::string& shaderPath) {
 
 	glGetShaderiv(shader, GL_COMPILE_STATUS, &isCompiled);
 
-	if (isCompiled == GL_FALSE) {
-		GLint maxLength = 0;
-		glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &maxLength);
+	GLint maxLength = 0;
+	glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &maxLength);
 
+	if(maxLength > 0) {
 		std::vector<GLchar> errorLog(maxLength);
 		glGetShaderInfoLog(shader, maxLength, &maxLength, &errorLog[0]);
+		std::string errorStr(errorLog.begin(), errorLog.end());
+
+		EtherLog::GetInstance()->LogError(errorStr);
+	}
+}
+
+
+void EtherApp::CheckLinkStatus(GLuint program) {
+	GLint isLinked = 0;
+	glGetProgramiv(program, GL_LINK_STATUS, &isLinked);
+
+	GLint  maxLength = 0;
+	glGetProgramiv(program, GL_INFO_LOG_LENGTH, &maxLength);
+
+	if (maxLength > 0) {
+		std::vector<GLchar> errorLog(maxLength);
+		glGetProgramInfoLog(program, maxLength, &maxLength, &errorLog[0]);
 		std::string errorStr(errorLog.begin(), errorLog.end());
 
 		EtherLog::GetInstance()->LogError(errorStr);

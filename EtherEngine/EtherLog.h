@@ -24,6 +24,7 @@ public:
 	}
 
 	void LogError(const std::string& msg);
+	void LogInfo(const std::string& msg);
 
 private:
 	static EtherLog* mInstance;

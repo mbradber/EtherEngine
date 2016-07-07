@@ -82,6 +82,7 @@ public:
 	}
 
 	static void EtherApp::CompileShader(GLuint shader, const std::string& shaderPath);
+	static void EtherApp::CheckLinkStatus(GLuint program);
 
 protected:
 

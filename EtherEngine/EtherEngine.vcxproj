@@ -175,6 +175,7 @@
     <ClInclude Include="vmath.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\assets\ktx\aliens.ktx" />
     <None Include="..\assets\ktx\baboon.ktx" />
     <None Include="..\assets\ktx\brick.ktx" />
     <None Include="..\assets\shaders\simple_tri_ps.glsl" />

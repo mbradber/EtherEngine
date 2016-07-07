@@ -7,7 +7,7 @@ protected:
 	void Startup() {
 		EtherApp::Startup();
 
-		mCube = new Ether::Renderables::EtherCubeRO("ktx/baboon.ktx");
+		mCube = new Ether::Renderables::EtherCubeRO("ktx/brick.ktx");
 
 		glEnable(GL_CULL_FACE);
 		glEnable(GL_DEPTH_TEST);

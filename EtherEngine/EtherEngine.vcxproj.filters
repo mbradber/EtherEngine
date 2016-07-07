@@ -106,5 +106,8 @@
     <None Include="..\assets\ktx\brick.ktx">
       <Filter>assets\ktx</Filter>
     </None>
+    <None Include="..\assets\ktx\aliens.ktx">
+      <Filter>assets\ktx</Filter>
+    </None>
   </ItemGroup>
 </Project>

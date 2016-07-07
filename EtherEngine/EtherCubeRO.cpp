@@ -21,8 +21,11 @@ EtherCubeRO::EtherCubeRO(const std::string& texture) {
 	glAttachShader(mProgram, vs);
 
 	glLinkProgram(mProgram);
+
 	glDeleteShader(fs);
 	glDeleteShader(vs);
+
+	Ether::Core::EtherApp::CheckLinkStatus(mProgram);
 
 	mModelViewLoc = glGetUniformLocation(mProgram, "mv_matrix");
 	mProjLoc = glGetUniformLocation(mProgram, "proj_matrix");

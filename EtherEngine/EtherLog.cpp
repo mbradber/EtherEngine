@@ -10,5 +10,9 @@ void EtherLog::LogError(const std::string& msg) {
 	OutputDebugStringA(msg.c_str());
 }
 
+void EtherLog::LogInfo(const std::string& msg) {
+	OutputDebugStringA(msg.c_str());
+}
+
 }
 }
