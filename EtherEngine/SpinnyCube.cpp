@@ -1,7 +1,7 @@
 #include "EtherApp.h"
 #include "EtherCubeRO.h"
 
-class EtherDemoApp : public Ether::Core::EtherApp
+class SpinnyCube : public Ether::Core::EtherApp
 {
 protected:
 	void Startup() {
@@ -45,4 +45,4 @@ private:
 	Ether::Renderables::EtherCubeRO* mCube;
 };
 
-DECLARE_MAIN(EtherDemoApp)
+//DECLARE_MAIN(SpinnyCube)

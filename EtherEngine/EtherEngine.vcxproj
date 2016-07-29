@@ -154,7 +154,8 @@
   <ItemGroup>
     <ClCompile Include="EtherApp.cpp" />
     <ClCompile Include="EtherCubeRO.cpp" />
-    <ClCompile Include="EtherDemoApp.cpp" />
+    <ClCompile Include="Grass.cpp" />
+    <ClCompile Include="SpinnyCube.cpp" />
     <ClCompile Include="EtherLog.cpp" />
     <ClCompile Include="EtherPlatform.cpp" />
     <ClCompile Include="GL\gl3w.c" />

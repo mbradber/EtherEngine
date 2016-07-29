@@ -25,6 +25,9 @@
     <Filter Include="assets\ktx">
       <UniqueIdentifier>{c1be6d54-455d-44d6-b751-001e20d99892}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Scenes">
+      <UniqueIdentifier>{1f40f468-83fe-4d47-9471-f4c9cf39c52d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GL\gl3w.c">
@@ -36,9 +39,6 @@
     <ClCompile Include="EtherApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EtherDemoApp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="EtherPlatform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -47,6 +47,12 @@
     </ClCompile>
     <ClCompile Include="EtherCubeRO.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SpinnyCube.cpp">
+      <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Grass.cpp">
+      <Filter>Source Files\Scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
