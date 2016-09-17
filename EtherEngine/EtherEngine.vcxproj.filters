@@ -48,11 +48,11 @@
     <ClCompile Include="EtherCubeRO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SpinnyCube.cpp">
+    <ClCompile Include="PhongLighting.cpp">
       <Filter>Source Files\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Grass.cpp">
-      <Filter>Source Files\Scenes</Filter>
+    <ClCompile Include="EtherRenderable.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +91,9 @@
     </ClInclude>
     <ClInclude Include="EtherGeometry.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EtherRenderable.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

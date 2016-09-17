@@ -87,7 +87,7 @@ public:
 protected:
 
 	virtual void Init() {
-		mWindowTitle = "EtherEngine Application";
+		mWindowTitle = "EtherEngine";
 		mWindowWidth = 800;
 		mWindowHeight = 600;
 		mSamples = 0;
@@ -107,6 +107,8 @@ protected:
 		mWindowWidth = w;
 		mWindowHeight = h;
 	}
+
+	virtual void SetWindowTitle(const std::string& subtext);
 
 	virtual void OnKey(int key, int action) {
 

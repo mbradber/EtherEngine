@@ -137,7 +137,7 @@ void EtherCubeRO::Render(double currentTime, const vmath::mat4& mvMatrix, const 
 	glUniformMatrix4fv(mProjLoc, 1, GL_FALSE, projMatrix);
 	glUniform1i(mTexLoc, 0); // tell sampler to look at 2d texture bound on texture unit 0
 
-							 // draw
+	 // draw
 	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_SHORT, 0);
 }
 

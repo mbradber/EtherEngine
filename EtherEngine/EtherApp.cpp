@@ -90,5 +90,9 @@ void EtherApp::Shutdown() {
 	EtherLog::GetInstance()->Release();
 }
 
+void EtherApp::SetWindowTitle(const std::string& subtext) {
+	mWindowTitle += " | " + subtext;
+}
+
 }
 }
