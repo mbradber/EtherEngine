@@ -27,7 +27,8 @@ protected:
 		std::string err;
 		std::string assetsDir = Ether::Core::EtherPlatform::GetInstance()->GetAssetsDirectory();
 		std::string inputfile = assetsDir + "models/Crate/Crate1.obj";
-		bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &err, inputfile.c_str());
+		std::string matlDir = "C:\\Users\\macobr\\dev\\EtherEngine\\assets\\models\\Crate\\";
+		bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &err, inputfile.c_str(), matlDir.c_str(), true);
 
 		if (!err.empty()) { // `err` may contain warning message.
 			std::cerr << err << std::endl;
@@ -35,6 +36,7 @@ protected:
 
 		std::unordered_map<Ether::Core::EtherVert_Pos_Tex_Nml, int> unique_vertices;
 		std::vector<size_t> indices;
+		std::string texturePath = "";
 
 		// Loop over shapes/meshes, for a cube, there are 6 "shapes" ("front", "back", "right", etc...)
 		for (size_t s = 0; s < shapes.size(); s++) {
@@ -88,7 +90,7 @@ protected:
 						unique_vertices[vert] = mVertices.size();
 						mVertices.push_back(vert);
 					}
-					
+
 					// store index entry for this vertex of this face
 					mIndices.push_back(unique_vertices[vert]);
 				}
@@ -96,11 +98,15 @@ protected:
 				index_offset += fv;
 
 				// per-face material
-				shapes[s].mesh.material_ids[f];
+				int matId = shapes[s].mesh.material_ids[f];
+				if (matId >= 0) {
+					tinyobj::material_t faceMaterial = materials[matId];
+					texturePath = faceMaterial.diffuse_texname;
+				}
 			}
 		}
 
-		mCube = std::make_unique<Ether::Renderables::EtherRenderable>(mVertices, mIndices);
+		mCube = std::make_unique<Ether::Renderables::EtherRenderable>(mVertices, mIndices, texturePath);
 
 		glEnable(GL_CULL_FACE);
 		glEnable(GL_DEPTH_TEST);

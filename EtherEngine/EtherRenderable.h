@@ -12,7 +12,7 @@ class EtherRenderable
 {
 public:
 	EtherRenderable(const std::vector<Ether::Core::EtherVert_Pos_Tex_Nml>& verts,
-		const std::vector<GLushort> indices);
+		const std::vector<GLushort> indices, const std::string& texPath);
 
 	~EtherRenderable();
 

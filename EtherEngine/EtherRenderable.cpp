@@ -8,7 +8,7 @@ namespace Ether {
 namespace Renderables {
 
 EtherRenderable::EtherRenderable(const std::vector<Ether::Core::EtherVert_Pos_Tex_Nml>& verts,
-	const std::vector<GLushort> indices): mVertCount(indices.size()) { 
+	const std::vector<GLushort> indices, const std::string& texPath): mVertCount(indices.size()) { 
 	// build shader object & grab uniform locs
 	mProgram = glCreateProgram();
 
@@ -48,10 +48,9 @@ EtherRenderable::EtherRenderable(const std::vector<Ether::Core::EtherVert_Pos_Te
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mIbo);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(GLushort), indices.data(), GL_STATIC_DRAW);
 
-	std::string texture = "ktx/brick.ktx";
 	glGenTextures(1, &mTexObject);
 	std::string texturePath = Ether::Core::EtherPlatform::GetInstance()->GetAssetsDirectory();
-	texturePath += texture;
+	texturePath += texPath;
 	unsigned int texLoaded = sb7::ktx::file::load(texturePath.c_str(), mTexObject);
 	if (texLoaded != mTexObject) {
 		Ether::Core::EtherLog::GetInstance()->LogError("Could not load texture.");
