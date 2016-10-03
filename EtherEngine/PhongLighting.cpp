@@ -6,6 +6,7 @@
 #include "tiny_obj_loader.h"
 #include <unordered_map>
 #include "EtherRenderable.h"
+#include "EtherCamera.h"
 
 #define TINYOBJLOADER_IMPLEMENTATION // define this in only *one* .cc
 
@@ -106,11 +107,27 @@ protected:
 			}
 		}
 
+		mCamera = std::make_unique<Ether::Graphics::EtherCamera>();
 		mCube = std::make_unique<Ether::Renderables::EtherRenderable>(mVertices, mIndices, texturePath);
 
 		glEnable(GL_CULL_FACE);
 		glEnable(GL_DEPTH_TEST);
 		glDepthFunc(GL_LEQUAL);
+	}
+
+	virtual void OnKey(int key, int action) {
+		if (key == GLFW_KEY_D) {
+			mCamera->MoveRight();
+		}
+		else if (key == GLFW_KEY_A) {
+			mCamera->MoveLeft();
+		}
+		else if (key == GLFW_KEY_Q) {
+			mCamera->MoveUp();
+		}
+		else if (key == GLFW_KEY_E) {
+			mCamera->MoveDown();
+		}
 	}
 
 	void Render(double currentTime) {
@@ -124,13 +141,16 @@ protected:
 		glClearBufferfv(GL_DEPTH, 0, &one);
 
 		float f = (float)currentTime * 0.3f;
-		vmath::mat4 mvMatrix = vmath::translate(0.0f, 0.0f, -4.0f) *
-			vmath::translate(sinf(2.1f * f) * 0.5f,
-				cosf(1.7f * f) * 0.5f,
-				sinf(1.3f * f) * cosf(1.5f * f) * 2.0f) *
-			vmath::rotate((float)currentTime * 45.0f, 0.0f, 1.0f, 0.0f) *
-			vmath::rotate((float)currentTime * 81.0f, 1.0f, 0.0f, 0.0f);
-		vmath::mat4 projMatrix = vmath::perspective(50.0f, (float)mWindowWidth / (float)mWindowHeight, 0.1f, 1000.0f);
+		// model matrix
+		glm::mat4 modelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.f, 0.f, 0.f));
+		//modelMatrix = glm::rotate(modelMatrix, f, glm::vec3(0.f, 1.f, 0.f));
+
+		// view matrix
+		glm::mat4 viewMatrix = mCamera->GetView();
+		glm::mat4 mvMatrix = viewMatrix * modelMatrix;
+
+		// projection matrix
+		glm::mat4 projMatrix = glm::perspective(50.f, (float)mWindowWidth / (float)mWindowHeight, 0.1f, 1000.f);
 
 		mCube->Render(currentTime, mvMatrix, projMatrix);
 	}
@@ -141,6 +161,8 @@ protected:
 
 private:
 	std::unique_ptr<Ether::Renderables::EtherRenderable> mCube;
+	std::unique_ptr<Ether::Graphics::EtherCamera> mCamera;
+
 	std::vector<Ether::Core::EtherVert_Pos_Tex_Nml> mVertices;
 	std::vector<GLushort> mIndices;
 };

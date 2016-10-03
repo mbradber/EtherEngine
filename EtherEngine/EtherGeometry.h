@@ -1,6 +1,5 @@
 #pragma once
 
-#include "vmath.h"
 #include <glm\vec3.hpp>
 #include <glm\vec2.hpp>
 
@@ -39,7 +38,6 @@ public:
 	bool operator==(const EtherVert_Pos_Tex_Nml& other) const {
 		return pos == other.pos && nml == other.nml && tc == other.tc;
 	}
-
 };
 
 }

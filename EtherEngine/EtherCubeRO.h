@@ -1,8 +1,8 @@
 #pragma once
 
 #include "GL/gl3w.h"
-#include "vmath.h"
 #include <string>
+#include "EtherMath.h"
 
 namespace Ether {
 namespace Renderables {
@@ -13,7 +13,7 @@ public:
 	EtherCubeRO(const std::string& texture);
 	~EtherCubeRO();
 
-	void Render(double currentTime, const vmath::mat4& mvMatrix, const vmath::mat4& projMatrix);
+	void Render(double currentTime, const glm::mat4& mvMatrix, const glm::mat4& projMatrix);
 
 private:
 	GLuint mVao;

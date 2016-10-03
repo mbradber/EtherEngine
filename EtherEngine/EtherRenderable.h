@@ -3,7 +3,7 @@
 #include "GL/gl3w.h"
 #include "EtherGeometry.h"
 #include <vector>
-#include "vmath.h"
+#include "EtherMath.h"
 
 namespace Ether {
 namespace Renderables {
@@ -16,7 +16,7 @@ public:
 
 	~EtherRenderable();
 
-	void Render(double currentTime, const vmath::mat4& mvMatrix, const vmath::mat4& projMatrix);
+	void Render(double currentTime, const glm::mat4& mvMatrix, const glm::mat4& projMatrix);
 
 private:
 	GLuint mVao;

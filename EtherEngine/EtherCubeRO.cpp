@@ -120,7 +120,7 @@ EtherCubeRO::~EtherCubeRO() {
 }
 
 
-void EtherCubeRO::Render(double currentTime, const vmath::mat4& mvMatrix, const vmath::mat4& projMatrix) {
+void EtherCubeRO::Render(double currentTime, const glm::mat4& mvMatrix, const glm::mat4& projMatrix) {
 	// set this objects shader program and bind its VAO
 	glUseProgram(mProgram);
 	glBindVertexArray(mVao);
@@ -133,8 +133,8 @@ void EtherCubeRO::Render(double currentTime, const vmath::mat4& mvMatrix, const 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 	// set shader uniforms
-	glUniformMatrix4fv(mModelViewLoc, 1, GL_FALSE, mvMatrix);
-	glUniformMatrix4fv(mProjLoc, 1, GL_FALSE, projMatrix);
+	glUniformMatrix4fv(mModelViewLoc, 1, GL_FALSE, glm::value_ptr(mvMatrix));
+	glUniformMatrix4fv(mProjLoc, 1, GL_FALSE, glm::value_ptr(projMatrix));
 	glUniform1i(mTexLoc, 0); // tell sampler to look at 2d texture bound on texture unit 0
 
 	 // draw

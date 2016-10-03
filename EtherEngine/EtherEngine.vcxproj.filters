@@ -54,6 +54,9 @@
     <ClCompile Include="EtherRenderable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EtherCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GL\gl3w.h">
@@ -92,8 +95,14 @@
     <ClInclude Include="EtherGeometry.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EtherRenderable.h">
+    <ClInclude Include="EtherMath.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EtherCamera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EtherRenderable.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

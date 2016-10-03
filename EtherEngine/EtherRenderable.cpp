@@ -72,7 +72,7 @@ EtherRenderable::~EtherRenderable() {
 	glDeleteProgram(mProgram);
 }
 
-void EtherRenderable::Render(double currentTime, const vmath::mat4& mvMatrix, const vmath::mat4& projMatrix)
+void EtherRenderable::Render(double currentTime, const glm::mat4& mvMatrix, const glm::mat4& projMatrix)
 {
 	glUseProgram(mProgram);
 	glBindVertexArray(mVao);
@@ -83,8 +83,8 @@ void EtherRenderable::Render(double currentTime, const vmath::mat4& mvMatrix, co
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	glUniformMatrix4fv(mModelViewLoc, 1, GL_FALSE, mvMatrix);
-	glUniformMatrix4fv(mProjLoc, 1, GL_FALSE, projMatrix);
+	glUniformMatrix4fv(mModelViewLoc, 1, GL_FALSE, glm::value_ptr(mvMatrix));
+	glUniformMatrix4fv(mProjLoc, 1, GL_FALSE, glm::value_ptr(projMatrix));
 	glUniform1i(mTexLoc, 0);
 
 	glDrawElements(GL_TRIANGLES, mVertCount, GL_UNSIGNED_SHORT, 0);

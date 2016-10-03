@@ -153,6 +153,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="EtherApp.cpp" />
+    <ClCompile Include="EtherCamera.cpp" />
     <ClCompile Include="EtherCubeRO.cpp" />
     <ClCompile Include="EtherRenderable.cpp" />
     <ClCompile Include="PhongLighting.cpp" />
@@ -163,9 +164,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EtherApp.h" />
+    <ClInclude Include="EtherCamera.h" />
     <ClInclude Include="EtherCubeRO.h" />
     <ClInclude Include="EtherGeometry.h" />
     <ClInclude Include="EtherLog.h" />
+    <ClInclude Include="EtherMath.h" />
     <ClInclude Include="EtherPlatform.h" />
     <ClInclude Include="EtherRenderable.h" />
     <ClInclude Include="GL\gl3w.h" />
