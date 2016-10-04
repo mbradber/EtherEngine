@@ -17,6 +17,11 @@ public:
 	void MoveLeft();
 	void MoveUp();
 	void MoveDown();
+	void MoveForward();
+	void MoveBack();
+
+	void Update(float currentTime);
+	void UpdateInput(int key, int action);
 
 private:
 	glm::vec3 mPosition;
@@ -24,6 +29,13 @@ private:
 	glm::vec3 mForward;
 	glm::vec3 mRight;
 	glm::vec3 mUp;
+
+	bool mKeys[1024] = { false };
+
+	float mDeltaTime;
+	float mLastTime;
+
+	static float sMoveSpeed;
 };
 
 }

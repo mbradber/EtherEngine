@@ -7,6 +7,7 @@
 #include <unordered_map>
 #include "EtherRenderable.h"
 #include "EtherCamera.h"
+#include "EtherLog.h"
 
 #define TINYOBJLOADER_IMPLEMENTATION // define this in only *one* .cc
 
@@ -116,18 +117,7 @@ protected:
 	}
 
 	virtual void OnKey(int key, int action) {
-		if (key == GLFW_KEY_D) {
-			mCamera->MoveRight();
-		}
-		else if (key == GLFW_KEY_A) {
-			mCamera->MoveLeft();
-		}
-		else if (key == GLFW_KEY_Q) {
-			mCamera->MoveUp();
-		}
-		else if (key == GLFW_KEY_E) {
-			mCamera->MoveDown();
-		}
+		mCamera->UpdateInput(key, action);
 	}
 
 	void Render(double currentTime) {
@@ -140,6 +130,8 @@ protected:
 		glClearBufferfv(GL_COLOR, 0, green);
 		glClearBufferfv(GL_DEPTH, 0, &one);
 
+		mCamera->Update(currentTime);
+
 		float f = (float)currentTime * 0.3f;
 		// model matrix
 		glm::mat4 modelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.f, 0.f, 0.f));
@@ -150,7 +142,7 @@ protected:
 		glm::mat4 mvMatrix = viewMatrix * modelMatrix;
 
 		// projection matrix
-		glm::mat4 projMatrix = glm::perspective(50.f, (float)mWindowWidth / (float)mWindowHeight, 0.1f, 1000.f);
+		glm::mat4 projMatrix = glm::perspective(glm::radians(50.f), (float)mWindowWidth / (float)mWindowHeight, 0.1f, 1000.f);
 
 		mCube->Render(currentTime, mvMatrix, projMatrix);
 	}
