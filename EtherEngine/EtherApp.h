@@ -55,6 +55,8 @@ public:
 
 		glfwSetWindowSizeCallback(mWindow, GLFW_OnResize);
 		glfwSetKeyCallback(mWindow, GLFW_OnKey);
+		glfwSetCursorPosCallback(mWindow, GLFW_OnCursorPos);
+		//glfwSetInputMode(mWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 		gl3wInit();
 
@@ -114,6 +116,10 @@ protected:
 
 	}
 
+	virtual void OnCursorPos(double xpos, double ypos) {
+	
+	}
+
 	virtual void OnDebugMessage(GLenum source,
 		GLenum type,
 		GLuint id,
@@ -143,6 +149,10 @@ private:
 
 	static void GLFW_OnKey(GLFWwindow* window, int key, int scancode, int action, int mods) {
 		mApp->OnKey(key, action);
+	}
+
+	static void GLFW_OnCursorPos(GLFWwindow* window, double xpos, double ypos) {
+		mApp->OnCursorPos(xpos, ypos);
 	}
 
 	GLFWwindow* mWindow;

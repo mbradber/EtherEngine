@@ -21,7 +21,8 @@ public:
 	void MoveBack();
 
 	void Update(float currentTime);
-	void UpdateInput(int key, int action);
+	void UpdateMovement(int key, int action);
+	void UpdateDirection(double xpos, double ypos);
 
 private:
 	glm::vec3 mPosition;
@@ -34,6 +35,13 @@ private:
 
 	float mDeltaTime;
 	float mLastTime;
+
+	float mYaw;
+	float mPitch;
+	float mLastInputX;
+	float mLastInputY;
+	float mSensitivity;
+	bool mFirstInput;
 
 	static float sMoveSpeed;
 };

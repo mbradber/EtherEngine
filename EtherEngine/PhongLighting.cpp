@@ -8,6 +8,7 @@
 #include "EtherRenderable.h"
 #include "EtherCamera.h"
 #include "EtherLog.h"
+#include <sstream>
 
 #define TINYOBJLOADER_IMPLEMENTATION // define this in only *one* .cc
 
@@ -116,8 +117,12 @@ protected:
 		glDepthFunc(GL_LEQUAL);
 	}
 
-	virtual void OnKey(int key, int action) {
-		mCamera->UpdateInput(key, action);
+	virtual void OnKey(int key, int action) override {
+		mCamera->UpdateMovement(key, action);
+	}
+
+	virtual void OnCursorPos(double xpos, double ypos) override {
+		mCamera->UpdateDirection(xpos, ypos);
 	}
 
 	void Render(double currentTime) {
