@@ -125,6 +125,15 @@ protected:
 		mCamera->UpdateDirection(xpos, ypos);
 	}
 
+	virtual void OnMouseButton(int button, int action, int mods) override {
+		if (button == GLFW_MOUSE_BUTTON_LEFT) {
+			if (action == GLFW_PRESS)
+				mCamera->DirectionCapture(true);
+			else if(action == GLFW_RELEASE)
+				mCamera->DirectionCapture(false);
+		}
+	}
+
 	void Render(double currentTime) {
 		EtherApp::Render(currentTime);
 

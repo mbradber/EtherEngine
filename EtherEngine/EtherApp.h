@@ -56,7 +56,7 @@ public:
 		glfwSetWindowSizeCallback(mWindow, GLFW_OnResize);
 		glfwSetKeyCallback(mWindow, GLFW_OnKey);
 		glfwSetCursorPosCallback(mWindow, GLFW_OnCursorPos);
-		//glfwSetInputMode(mWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+		glfwSetMouseButtonCallback(mWindow, GLFW_OnMouseButton);
 
 		gl3wInit();
 
@@ -120,6 +120,10 @@ protected:
 	
 	}
 
+	virtual void OnMouseButton(int button, int action, int mods) {
+		EtherLog::GetInstance()->LogInfo("Mouse button pressed");
+	}
+
 	virtual void OnDebugMessage(GLenum source,
 		GLenum type,
 		GLuint id,
@@ -153,6 +157,10 @@ private:
 
 	static void GLFW_OnCursorPos(GLFWwindow* window, double xpos, double ypos) {
 		mApp->OnCursorPos(xpos, ypos);
+	}
+
+	static void GLFW_OnMouseButton(GLFWwindow* window, int button, int action, int mods) {
+		mApp->OnMouseButton(button, action, mods);
 	}
 
 	GLFWwindow* mWindow;

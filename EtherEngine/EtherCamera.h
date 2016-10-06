@@ -23,6 +23,7 @@ public:
 	void Update(float currentTime);
 	void UpdateMovement(int key, int action);
 	void UpdateDirection(double xpos, double ypos);
+	void DirectionCapture(bool);
 
 private:
 	glm::vec3 mPosition;
@@ -42,6 +43,7 @@ private:
 	float mLastInputY;
 	float mSensitivity;
 	bool mFirstInput;
+	bool mDirectionCapture;
 
 	static float sMoveSpeed;
 };

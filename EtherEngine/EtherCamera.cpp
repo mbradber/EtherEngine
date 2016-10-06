@@ -21,7 +21,8 @@ EtherCamera::EtherCamera()
 	mLastInputX(0.f),
 	mLastInputY(0.f),
 	mFirstInput(true),
-	mSensitivity(0.05f)
+	mSensitivity(0.1f),
+	mDirectionCapture(false)
 {
 }
 
@@ -69,6 +70,9 @@ void EtherCamera::UpdateMovement(int key, int action) {
 } 
 
 void EtherCamera::UpdateDirection(double xpos, double ypos) {
+	if (!mDirectionCapture)
+		return;
+
 	if (mFirstInput) {
 		mLastInputX = xpos;
 		mLastInputY = ypos;
@@ -110,13 +114,21 @@ void EtherCamera::Update(float currentTime) {
 	if (mKeys[GLFW_KEY_A])
 		MoveLeft();
 	if (mKeys[GLFW_KEY_Q])
-		MoveUp();
-	if (mKeys[GLFW_KEY_E])
 		MoveDown();
+	if (mKeys[GLFW_KEY_E])
+		MoveUp();
 	if (mKeys[GLFW_KEY_W])
 		MoveForward();
 	if (mKeys[GLFW_KEY_S])
 		MoveBack();
+}
+
+void EtherCamera::DirectionCapture(bool capture) {
+	if (!capture) {
+		mFirstInput = true;
+	}
+
+	mDirectionCapture = capture;
 }
 
 
