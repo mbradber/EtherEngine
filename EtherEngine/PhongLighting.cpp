@@ -29,8 +29,9 @@ protected:
 
 		std::string err;
 		std::string assetsDir = Ether::Core::EtherPlatform::GetInstance()->GetAssetsDirectory();
-		std::string inputfile = assetsDir + "models/Crate/Crate1.obj";
-		std::string matlDir = "C:\\Users\\macobr\\dev\\EtherEngine\\assets\\models\\Crate\\";
+		std::string matlDir = assetsDir + "models/Crate/";
+		//std::string inputfile = assetsDir + "models/Crate/Crate1.obj";
+		std::string inputfile = assetsDir + "models/cube_simple.obj";
 		bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &err, inputfile.c_str(), matlDir.c_str(), true);
 
 		if (!err.empty()) { // `err` may contain warning message.
@@ -149,16 +150,16 @@ protected:
 		float f = (float)currentTime * 0.3f;
 		// model matrix
 		glm::mat4 modelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.f, 0.f, 0.f));
-		//modelMatrix = glm::rotate(modelMatrix, f, glm::vec3(0.f, 1.f, 0.f));
+		//modelMatrix = glm::scale(glm::mat4(1.f), glm::vec3(0.1f, 0.1f, 0.1f));
+		modelMatrix = glm::rotate(modelMatrix, f, glm::vec3(0.f, 1.f, 0.f));
 
 		// view matrix
 		glm::mat4 viewMatrix = mCamera->GetView();
-		glm::mat4 mvMatrix = viewMatrix * modelMatrix;
 
 		// projection matrix
 		glm::mat4 projMatrix = glm::perspective(glm::radians(50.f), (float)mWindowWidth / (float)mWindowHeight, 0.1f, 1000.f);
 
-		mCube->Render(currentTime, mvMatrix, projMatrix);
+		mCube->Render(currentTime, modelMatrix, viewMatrix, projMatrix);
 	}
 
 	void Shutdown() {

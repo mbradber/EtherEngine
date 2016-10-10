@@ -183,6 +183,8 @@
     <None Include="..\assets\ktx\aliens.ktx" />
     <None Include="..\assets\ktx\baboon.ktx" />
     <None Include="..\assets\ktx\brick.ktx" />
+    <None Include="..\assets\shaders\phonglighting_fs.glsl" />
+    <None Include="..\assets\shaders\phonglighting_vs.glsl" />
     <None Include="..\assets\shaders\simple_tri_ps.glsl" />
     <None Include="..\assets\shaders\simple_tri_vs.glsl" />
     <None Include="..\assets\shaders\texture_map_basic_fs.glsl" />

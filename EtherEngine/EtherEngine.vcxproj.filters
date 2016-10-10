@@ -127,5 +127,11 @@
     <None Include="..\assets\ktx\aliens.ktx">
       <Filter>assets\ktx</Filter>
     </None>
+    <None Include="..\assets\shaders\phonglighting_fs.glsl">
+      <Filter>assets\shaders</Filter>
+    </None>
+    <None Include="..\assets\shaders\phonglighting_vs.glsl">
+      <Filter>assets\shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -16,7 +16,7 @@ public:
 
 	~EtherRenderable();
 
-	void Render(double currentTime, const glm::mat4& mvMatrix, const glm::mat4& projMatrix);
+	void Render(double currentTime, const glm::mat4& modelMatrix, const glm::mat4& viewMatrix, const glm::mat4& projMatrix);
 
 private:
 	GLuint mVao;
@@ -25,8 +25,9 @@ private:
 	GLuint mTexObject;
 
 	GLuint mProgram;
-	GLuint mModelViewLoc;
-	GLuint mProjLoc;
+	GLuint mModelMatrixLoc;
+	GLuint mViewMatrixLoc;
+	GLuint mProjMatrixLoc;
 	GLuint mTexLoc;
 	GLuint mVertCount;
 };
