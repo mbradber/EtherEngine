@@ -16,7 +16,7 @@ EtherRenderable::EtherRenderable(const std::vector<Ether::Core::EtherVert_Pos_Te
 	Ether::Core::EtherApp::CompileShader(fs, "phonglighting_fs.glsl");
 
 	GLuint vs = glCreateShader(GL_VERTEX_SHADER);
-	Ether::Core::EtherApp::CompileShader(vs, "phonglighting_vs.glsl");
+	Ether::Core::EtherApp::CompileShader(vs, "phonglighting.vert");
 
 	glAttachShader(mProgram, fs);
 	glAttachShader(mProgram, vs);

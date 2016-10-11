@@ -31,7 +31,7 @@ protected:
 		std::string assetsDir = Ether::Core::EtherPlatform::GetInstance()->GetAssetsDirectory();
 		std::string matlDir = assetsDir + "models/Crate/";
 		//std::string inputfile = assetsDir + "models/Crate/Crate1.obj";
-		std::string inputfile = assetsDir + "models/cube_simple.obj";
+		std::string inputfile = assetsDir + "models/custom/sphere.obj";
 		bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &err, inputfile.c_str(), matlDir.c_str(), true);
 
 		if (!err.empty()) { // `err` may contain warning message.
@@ -138,11 +138,11 @@ protected:
 	void Render(double currentTime) {
 		EtherApp::Render(currentTime);
 
-		static const GLfloat green[] = { 0.0f, 0.25f, 0.0f, 1.0f };
+		static const GLfloat skyBlue[] = { 0.3f, 0.72f, 1.0f, 1.0f };
 		static const GLfloat one = 1.0f;
 
 		glViewport(0, 0, mWindowWidth, mWindowHeight);
-		glClearBufferfv(GL_COLOR, 0, green);
+		glClearBufferfv(GL_COLOR, 0, skyBlue);
 		glClearBufferfv(GL_DEPTH, 0, &one);
 
 		mCamera->Update(currentTime);

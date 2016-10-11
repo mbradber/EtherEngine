@@ -27,7 +27,7 @@ public:
 
 private:
 	glm::vec3 mPosition;
-	glm::vec3 mTarget;;
+	glm::vec3 mTarget;
 	glm::vec3 mForward;
 	glm::vec3 mRight;
 	glm::vec3 mUp;
